@@ -37,6 +37,27 @@ const StartScreen = () => {
             <TouchableOpacity style={styles.button}>
                 <Text style={styles.buttonText}>Go to catalog</Text>
             </TouchableOpacity>
+
+            {/* Popular Products Section */}
+            <View style={styles.contentContainer}>
+                <View style={styles.headerRow}>
+                    <Text style={styles.popularText}>Popular products</Text>
+                    <Text style={styles.viewAllText}>View all</Text>
+                </View>
+
+                {loading ? (
+                    <ActivityIndicator size="large" color="#00bdd6" />
+                ) : (
+                    <FlatList
+                        data={products}
+                        renderItem={renderProduct}
+                        keyExtractor={(item) => item.id}
+                        horizontal
+                        showsHorizontalScrollIndicator={false}
+                        contentContainerStyle={styles.productList}
+                    />
+                )}
+            </View>
         </View>
     );
 };
