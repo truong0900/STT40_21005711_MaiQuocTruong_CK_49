@@ -70,7 +70,27 @@ const ShowScreen = () => {
         contentContainerStyle={styles.productList}
       />
 
-        
+        <View style={styles.bottomNav}>
+            <TouchableOpacity style={styles.navItem}>
+                <Image source={require('../assets/Data_Sang/home.png')} style={styles.navicon}/>
+                <Text style={styles.navLabel}>Home</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.navItem}>
+                <Image source={require('../assets/Data_Sang/search.png')} style={styles.navicon}/>
+                <Text style={styles.navLabel}>Search</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.navItem}>
+                <Image source={require('../assets/Data_Sang/heart.png')} style={styles.navicon}/>
+                <Text style={styles.navLabel}>Favorite</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.navItem}>
+                <Image source={require('../assets/Data_Sang/profile.png')} style={styles.navicon}/>
+                <Text style={styles.navLabel}>Profile</Text>
+            </TouchableOpacity>
+        </View>
     </View>
   );
 };
