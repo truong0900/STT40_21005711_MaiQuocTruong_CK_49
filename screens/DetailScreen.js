@@ -40,7 +40,31 @@ export default function DetailScreen({ route }) {
       {/* Main Image Section */}
       <Image source={{ uri: product.image }} style={styles.mainImage} />
 
-      
+      <View style={styles.additionalProductsContainer}>
+        <FlatList
+          data={additionalProducts}
+          renderItem={renderAdditionalProduct}
+          keyExtractor={(item) => item.id.toString()}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.additionalProductsList}
+        />
+      </View>
+
+      {/* Rating Section */}
+      <View style={styles.ratingContainer}>
+        <MaterialIcons name="star" size={16} color="orange" />
+        <Text style={styles.ratingText}>{product.rating}</Text>
+        <Text style={styles.reviewText}>({product.review})</Text>
+      </View>
+
+      {/* Title Section */}
+      <Text style={styles.title}>{product.name}</Text>
+
+      {/* Description Section */}
+      <Text style={styles.description}>{product.description}</Text>
+
+
 
     </ScrollView>
   );
