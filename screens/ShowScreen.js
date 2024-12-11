@@ -8,11 +8,13 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import axios from 'axios';
+import { useNavigation } from '@react-navigation/native';
 
 const ShowScreen = () => {
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('Chairs');
   const categories = ['Sofas', 'Chairs', 'Tables', 'Kitchen'];
+  const navigation = useNavigation();
 
   useEffect(() => {
     axios
@@ -49,11 +51,14 @@ const ShowScreen = () => {
   );
 
   const renderProduct = ({ item }) => (
-    <View style={styles.productCard}>
+    <TouchableOpacity
+      style={styles.productCard}
+      onPress={() => navigation.navigate('DetailScreen', { product: item })}
+    >
       <Image source={{ uri: item.image }} style={styles.productImage} />
       <Text style={styles.productName}>{item.name}</Text>
       <Text style={styles.productPrice}>{item.price}</Text>
-    </View>
+    </TouchableOpacity>
   );
 
   return (
