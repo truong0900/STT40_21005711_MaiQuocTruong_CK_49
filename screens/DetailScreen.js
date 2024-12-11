@@ -64,7 +64,13 @@ export default function DetailScreen({ route }) {
       {/* Description Section */}
       <Text style={styles.description}>{product.description}</Text>
 
-
+      {/* Price Section */}
+      <View style={styles.priceContainer}>
+        <Text style={styles.price}>{product.price}</Text>
+        <TouchableOpacity style={styles.addToCartButton}>
+          <Text style={styles.addToCartText}>Add to cart</Text>
+        </TouchableOpacity>
+      </View>
 
     </ScrollView>
   );
