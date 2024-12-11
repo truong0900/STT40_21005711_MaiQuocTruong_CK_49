@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, FlatList, ActivityIndicator } from 'react-native';
 import axios from 'axios';
 
-const StartScreen = () => {
+const StartScreen = ({ navigation }) => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -34,7 +34,10 @@ const StartScreen = () => {
             {/* Background and Title */}
             <Image source={require('../assets/Data_Sang/background.jpg')} style={styles.backgroundImage} />
             <Text style={styles.titleText}>Renovate your interior</Text>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity 
+                style={styles.button} 
+                onPress={() => navigation.navigate('ShowScreen')}
+            >
                 <Text style={styles.buttonText}>Go to catalog</Text>
             </TouchableOpacity>
 
