@@ -14,7 +14,16 @@ const ShowScreen = () => {
   const [selectedCategory, setSelectedCategory] = useState('Chairs');
   const categories = ['Sofas', 'Chairs', 'Tables', 'Kitchen'];
 
-  
+  useEffect(() => {
+    axios
+      .get('https://6758e7c760576a194d1231bd.mockapi.io/product')
+      .then((response) => {
+        setProducts(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching products:', error);
+      });
+  }, []);
 
   // Bỏ lọc theo category để hiển thị tất cả sản phẩm
   const renderCategory = (category) => (
@@ -39,7 +48,13 @@ const ShowScreen = () => {
     </TouchableOpacity>
   );
 
-  
+  const renderProduct = ({ item }) => (
+    <View style={styles.productCard}>
+      <Image source={{ uri: item.image }} style={styles.productImage} />
+      <Text style={styles.productName}>{item.name}</Text>
+      <Text style={styles.productPrice}>{item.price}</Text>
+    </View>
+  );
 
   return (
     <View style={styles.container}>
